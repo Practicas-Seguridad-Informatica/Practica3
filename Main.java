@@ -26,6 +26,8 @@ public class Main
 		       1,1,0,0,1,1,0,0,1,1,0,1,0,1,0,1,1,1,0,1,0,0,1,1,1,1,1,1,
 		       1,1,0,1,1,0,0,1};
 		
-		Decodificacion dec = new Decodificacion(lista);
+		String alf="abcde ABCDEfghijklmnFGHIJKLMNopqrstuvwxyzOPQRSTUVWXYZ.,;¿?¡!";
+		
+		Decodificacion dec = new Decodificacion(lista, alf);
 	}
 }

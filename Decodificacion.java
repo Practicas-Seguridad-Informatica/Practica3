@@ -1,19 +1,24 @@
 package p3ma;
 
 import java.util.ArrayList;
+import java.util.*;
 
 public class Decodificacion 
 {
 	private int[] lista;
 	private ArrayList<Integer> divCuatro;
 	private ArrayList<int[]> divSeis;
+	private ArrayList<Integer> numsTraduccion;
+	private String alf;
 	
 	//Constructor de la clase
-	public Decodificacion(int lista[])
+	public Decodificacion(int lista[], String alf)
 	{
 		this.lista = lista;
 		divCuatro = new ArrayList<Integer>();
 		divSeis = new ArrayList<int[]>();
+		numsTraduccion = new ArrayList<Integer>();
+		this.alf = alf;
 		
 		System.out.println(lista.length);
 		
@@ -61,8 +66,8 @@ public class Decodificacion
 			divSeis.add(arrayAux);
 		}
 		
-		
-		/*for(int i = 0; i < divSeis.size(); i++)
+		/*
+		for(int i = 0; i < divSeis.size(); i++)
 		{
 			int counter = 0;
 			int[] arrAux2 = divSeis.get(i);
@@ -77,20 +82,35 @@ public class Decodificacion
 		}*/
 		
 		traducir();	
+		
+		for(int i = 0; i < numsTraduccion.size(); i++)
+		{
+			System.out.println(numsTraduccion.get(i));
+		}
+		
+		System.out.println("------TRADUCIMOS---------");
+		
+		for(int i = 0; i < numsTraduccion.size(); i++)
+		{
+			System.out.print(alf.charAt(numsTraduccion.get(i)));
+		}
 	}
 	
 	private void traducir()
 	{
 		for(int i = 0; i < divSeis.size(); i++)
 		{
-			String linea = divSeis.get(i).toString();
+			int aux[] = divSeis.get(i);
 			int suma = 0;
 			
-			for(int j = 0; j < 6; j++)
+			for(int j = 0; j < aux.length; j++)
 			{
-				int exponente = 1;
-				exponente = linea.charAt(j);
-			}
+				if(aux[j] == 1)
+				{
+					suma += Math.pow(2, (5 - j));
+				}
+			}			
+			numsTraduccion.add(suma);
 		}
 	}
 	
